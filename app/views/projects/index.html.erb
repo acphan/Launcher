@@ -1,33 +1,44 @@
-<p id="notice"><%= notice %></p>
+<% @projects.each do |project| %>
+   <div class="link row clearfix">
+     <h2>
+       <%= link_to project.title, project %><br>
+       <small class="author">Submitted <%= time_ago_in_words(project.created_at) %> by <%= project.user.email %></small>
+     </h2>
+   </div>
+<% end %>
 
-<h1>Listing Projects</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Url</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.title %></td>
-        <td><%= project.url %></td>
-        <td><%= project.description %></td>
-        <td><%= link_to 'Show', project %></td>
-        <% if project.user == current_user %>
-          <td><%= link_to 'Edit', edit_project_path(project) %></td>
-          <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<!--<p id="notice"><%= notice %></p>-->
 
-<br>
+<!--<h1>Listing Projects</h1>-->
+
+<!--<table>-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th>Title</th>-->
+<!--      <th>Url</th>-->
+<!--      <th>Description</th>-->
+<!--      <th colspan="3"></th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+
+<!--  <tbody>-->
+<!--    <% @projects.each do |project| %>-->
+<!--      <tr>-->
+<!--        <td><%= project.title %></td>-->
+<!--        <td><%= project.url %></td>-->
+<!--        <td><%= project.description %></td>-->
+<!--        <td><%= link_to 'Show', project %></td>-->
+<!--        <% if project.user == current_user %>-->
+<!--          <td><%= link_to 'Edit', edit_project_path(project) %></td>-->
+<!--          <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+<!--        <% end %>-->
+<!--      </tr>-->
+<!--    <% end %>-->
+<!--  </tbody>-->
+<!--</table>-->
+
+<!--<br>-->
 
 
