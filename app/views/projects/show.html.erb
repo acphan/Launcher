@@ -14,8 +14,21 @@
 	<%= link_to 'Visit URL', @project.url, class: "btn btn-primary" %>
 </div>
 
+<div class="btn-group">
+  <%= link_to like_project_path(@project), method: :put, class: "btn btn-default" do %>
+    <span class="glyphicon glyphicon-chevron-up"></span>
+    Upvote
+    <%= @project.get_upvotes.size %>
+  <% end %>
+  <%= link_to dislike_project_path(@project), method: :put, class: "btn btn-default" do %>
+    <span class="glyphicon glyphicon-chevron-down">
+    Downvote
+    <%= @project.get_downvotes.size %>
+  <% end %>
+</div>
+
 <% if @project.user == current_user -%>
-  <div class="btn-group">
+  <div class="btn-group pull-right" >
     <%= link_to 'Edit', edit_project_path(@project), class:"btn btn-default" %>
     <%= link_to 'Destroy', @prject, method: :delete, data: { confirm: 'Are you sure?' }, 
     class: "btn btn-default" %>
