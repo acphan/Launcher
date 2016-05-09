@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  resources :comments
   devise_for :users
   resources :projects do
     member do
       put "like", to: "projects#upvote"
       put "dislike", to: "projects#downvote"
     end
+    resources :comments
   end
   
   root to: "projects#index"
