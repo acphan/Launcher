@@ -30,6 +30,8 @@ class ProjectsController < ApplicationController
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
+        #project_group = Group.new
+        #project_group.add(current_user, @project)
       else
         format.html { render :new }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -83,5 +85,7 @@ class ProjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:title, :url, :description)
+      #Used with ActAsTaggableOn
+      #params.require(:project).permit(:title, :url, :description, :tag_list)
     end
 end

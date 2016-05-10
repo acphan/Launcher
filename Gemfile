@@ -30,6 +30,10 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'acts_as_votable', '~> 0.10.0'
 
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
+
+gem 'acts-as-taggable-on', '~> 3.4'
+
+gem 'groupify'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
