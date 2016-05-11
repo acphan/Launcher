@@ -2,26 +2,25 @@ class Project < ActiveRecord::Base
     acts_as_votable
 
     #Namespace and tags for the ActsAsTaggableOn gems
-    #acts_as_taggable
-    #acts_as_taggable_on :tools, :skills
+    acts_as_taggable
+    acts_as_taggable_on :tools
 
     belongs_to :user
-    has_many :group_members
     has_many :comments
+    #has_one :group
 
-    #Specifies that a project is a member of a group in Groupify
-    #Might need to set up a separate class for a project group with the declaration:
-    ##class ProjectGroup < Group
-    ##has_members [:users]
-    #and then specify that a Project has a ProjectGroup using:
-    #has :project_group
-    #and add users to that
-    #groupify :group_member
+    #Groupify group for project members
+    groupify :group_member
 
     def self.search(search)
     if search
-      self.where("title LIKE ?", "%#{search}%")
+      #self.where("title LIKE ?", "%#{search}%")
       #Need another search statement that uses the tags and title (make title a tag?)
+      if self.tagged_with(search) != []
+      	self.tagged_with(search)
+      else
+      	self.where("title LIKE ?", "%#{search}%")
+      end
     else
       self.all
   	end

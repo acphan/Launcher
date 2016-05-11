@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510185558) do
+ActiveRecord::Schema.define(version: 20160511085020) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "project_id"
@@ -40,7 +40,8 @@ ActiveRecord::Schema.define(version: 20160510185558) do
   add_index "group_memberships", ["member_type", "member_id"], name: "index_group_memberships_on_member_type_and_member_id"
 
   create_table "groups", force: :cascade do |t|
-    t.string "type"
+    t.string  "type"
+    t.integer "project_id"
   end
 
   create_table "projects", force: :cascade do |t|
