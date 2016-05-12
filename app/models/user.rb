@@ -6,6 +6,16 @@ class User < ActiveRecord::Base
          
   has_many :comments
   has_many :projects
+
+ acts_as_messageable
+
+  def mailboxer_email(object)
+    #Check if an email should be sent for that object
+      #if true
+        return email
+      #if false
+        #return nil
+    end
   #has_and_belongs_to_many :groups
 
   #Used with Groupify, the second one is for adding an extra tag to a user, like "admin" or "author",
