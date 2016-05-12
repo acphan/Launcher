@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512012451) do
+ActiveRecord::Schema.define(version: 20160512031553) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "commentable_id"
@@ -27,22 +27,6 @@ ActiveRecord::Schema.define(version: 20160512012451) do
     t.datetime "updated_at"
   end
 
-  create_table "group_memberships", force: :cascade do |t|
-    t.integer  "member_id",       null: false
-    t.string   "member_type",     null: false
-    t.integer  "group_id"
-    t.string   "group_type"
-    t.string   "group_name"
-    t.string   "membership_type"
-  end
-  add_index "group_memberships", ["group_name"], name: "index_group_memberships_on_group_name"
-  add_index "group_memberships", ["group_type", "group_id"], name: "index_group_memberships_on_group_type_and_group_id"
-  add_index "group_memberships", ["member_type", "member_id"], name: "index_group_memberships_on_member_type_and_member_id"
-
-  create_table "groups", force: :cascade do |t|
-    t.string  "type"
-    t.integer "project_id"
-  end
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
@@ -132,7 +116,6 @@ ActiveRecord::Schema.define(version: 20160512012451) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
-    t.string   "name",                   default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -147,7 +130,6 @@ ActiveRecord::Schema.define(version: 20160512012451) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["name"], name: "index_users_on_name"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "votes", force: :cascade do |t|
