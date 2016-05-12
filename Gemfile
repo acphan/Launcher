@@ -29,6 +29,8 @@ gem 'devise', '~> 4.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 
 gem 'acts_as_votable', '~> 0.10.0'
+
+gem 'acts_as_commentable_with_threading', '~> 2.0', '>= 2.0.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
