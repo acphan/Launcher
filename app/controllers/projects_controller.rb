@@ -11,7 +11,9 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project        = Project.find(params[:id])
-    @new_comment    = Comment.build_from(@project, current_user.id, "")
+    if user_signed_in? 
+      @new_comment    = Comment.build_from(@project, current_user.id, "")
+    end
   end
 
   # GET /projects/new
