@@ -27,6 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise', '~> 4.1'
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+gem "font-awesome-rails"
 
 gem 'acts_as_votable', '~> 0.10.0'
 

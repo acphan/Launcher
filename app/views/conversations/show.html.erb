@@ -1,5 +1,6 @@
 <br \><br \>
 <div class="container">
+<div class="col-md-9 center-block">
   <div class="well">
     <h1>
       <%= @conversation.subject %>
@@ -13,10 +14,9 @@
       <% end %>
     </h2>
     <br/>
-    <ul>
-      <%= content_tag_for(:li, @conversation.receipts_for(current_user)) do |receipt| %>
+    <ul class="list-group">
+      <%= content_tag_for(:li, @conversation.receipts_for(current_user), class: "list-group-item") do |receipt| %>
         <% message = receipt.message %>
-        <br/>
         <b>
           <%= message.sender.name %>
         </b>
@@ -34,4 +34,5 @@
     </ul>
     <%= render 'messages/form', conversation: @conversation %>
   </div>
+</div>
 </div>

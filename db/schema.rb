@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512003536) do
+ActiveRecord::Schema.define(version: 20160512012451) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.string   "title"
+    t.text     "body"
+    t.string   "subject"
+    t.integer  "user_id",          null: false
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.integer "unsubscriber_id"
@@ -66,23 +83,6 @@ ActiveRecord::Schema.define(version: 20160512003536) do
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
 
-  create_table "comments", force: :cascade do |t|
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.string   "title"
-    t.text     "body"
-    t.string   "subject"
-    t.integer  "user_id",          null: false
-    t.integer  "parent_id"
-    t.integer  "lft"
-    t.integer  "rgt"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
-
   create_table "projects", force: :cascade do |t|
     t.string   "title"
     t.string   "url"
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20160512003536) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
-    t.string   "name",                  default: "", null: false
+    t.string   "name",                   default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -110,8 +110,8 @@ ActiveRecord::Schema.define(version: 20160512003536) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "users", ["name"], name: "index_users_on_name"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["name"], name: "index_users_on_name"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "votes", force: :cascade do |t|
