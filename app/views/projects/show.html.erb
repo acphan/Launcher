@@ -34,3 +34,5 @@
     class: "btn btn-default" %>
   </div>
 <% end %>
+
+<%= render partial: "comments/template", locals: {commentable: @project, new_comment: @comment} %>
