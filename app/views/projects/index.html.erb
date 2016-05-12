@@ -2,7 +2,7 @@
    <div class="link row clearfix">
      <h2>
        <%= link_to project.title, project %><br>
-       <small class="author">Submitted <%= time_ago_in_words(project.created_at) %> by <%= project.user.email %></small>
+       <small class="author">Submitted <%= time_ago_in_words(project.created_at) %> ago by <%= project.user.email %></small>
      </h2>
      
      

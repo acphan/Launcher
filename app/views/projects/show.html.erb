@@ -8,6 +8,12 @@
   </br>
   </br>
   <strong>Need to be styled</strong>
+  </br>
+  </br>
+  <strong>Tags:</strong>
+  <%= @project.tag_list %>
+  </br>
+  </br>
 </p>
 
 <div class="btn-group">
@@ -16,6 +22,10 @@
 <div class="btn-group">
   <%= link_to 'Message', new_message_path(:user => @project.user.id), class: "btn btn-primary" %>
 </div>
+
+<!--<div class="btn-group">
+  link_to 'Join Project', current_user.groups << Group.with_member(@project).first, class: "btn btn-primary"
+</div>-->
 
 <div class="btn-group">
   <%= link_to like_project_path(@project), method: :put, class: "btn btn-default" do %>
