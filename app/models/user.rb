@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
 
   #Used with Groupify, the second one is for adding an extra tag to a user, like "admin" or "author",
   #which we could use for the view
-  groupify :group_member
+  #groupify :group_member
   #groupify :named_group_member
 end

@@ -10,7 +10,7 @@ class Project < ActiveRecord::Base
     #has_one :group
 
     #Groupify group for project members
-    groupify :group_member
+    #groupify :group_member
 
     def self.search(search)
     if search

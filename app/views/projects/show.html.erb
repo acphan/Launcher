@@ -14,17 +14,15 @@
   <%= @project.tag_list %>
   </br>
   </br>
-  <strong>Members:</strong>
-  <%= User.shares_any_group(@project) %>
 </p>
 
 <div class="btn-group">
 	<%= link_to 'Visit URL', @project.url, class: "btn btn-primary" %>
 </div>
 
-<div class="btn-group">
-  <%= link_to 'Join Project', current_user.groups << Group.with_member(@project).first, class: "btn btn-primary"%>
-</div>
+<!--<div class="btn-group">
+  link_to 'Join Project', current_user.groups << Group.with_member(@project).first, class: "btn btn-primary"
+</div>-->
 
 <div class="btn-group">
   <%= link_to like_project_path(@project), method: :put, class: "btn btn-default" do %>
