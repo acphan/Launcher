@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :projects do
     member do
       put "like", to: "projects#upvote"
@@ -8,6 +8,24 @@ Rails.application.routes.draw do
   end
   
   root to: "projects#index"
+
+get "/messages" => redirect("/conversations")
+  resources :messages do
+  member do
+    post :new
+  end
+end
+  resources :conversations do
+  member do
+    post :reply
+    post :trash
+    post :untrash
+  end
+ collection do
+    get :trashbin
+    post :empty_trash
+ end
+end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
