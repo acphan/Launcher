@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :projects
 
- acts_as_messageable
+  acts_as_messageable
 
   def mailboxer_email(object)
     #Check if an email should be sent for that object

@@ -7,6 +7,10 @@ class ProjectsController < ApplicationController
     @projects = Project.search(params[:search])
   end
 
+  def search
+    @projects = Project.search(params[:search])
+  end
+
   # GET /projects/1
   # GET /projects/1.json
   def show

@@ -6,6 +6,9 @@ Rails.application.routes.draw do
       put "like", to: "projects#upvote"
       put "dislike", to: "projects#downvote"
     end
+    collection do
+      get "search"
+    end
     resources :comments
   end
   

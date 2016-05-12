@@ -13,15 +13,14 @@
       <div class="container">
         <div id="logo" class="navbar-brand"><%= link_to "Launcher", root_path %></div>
         <nav class="collapse navbar-collapse navbar-ex1-collapse">
-        	<form class="navbar-form navbar-left" method=":search">
+        	<form action="/projects" class="navbar-form navbar-left" method=":search">
     			<div class="input-group">
-  <%= form_tag(projects_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Posts", class: 'form-control' %>
-    <span class="input-group-btn">
-      <%= submit_tag "Search", class: 'btn btn-default' %>
-    </span>
-  <% end %>
-</div>
+              <%= text_field_tag :search, params[:search], placeholder: "Search Projects", class: 'form-control' %>
+              <span class="input-group-btn">
+                <%= submit_tag "Search", class: 'btn btn-default' %>
+              </span>
+            </form>
+          </div>
         	<% if user_signed_in? -%>
 						<ul class="nav navbar-nav navbar-right">
 							<li><%= link_to 'Submit Project', new_project_path %></li>
@@ -31,7 +30,7 @@
 						</ul>
 					<% else -%>
 						<ul class="nav navbar-nav pull-right">
-							<li><%= link_to 'Sign up', new_user_registration_path %></li>
+							<li><%= link_to 'Sign up', new_user_registration_path %><li>
 							<li><%= link_to 'Sign in', new_user_session_path %></li>
 						</ul>
 					<% end -%>
