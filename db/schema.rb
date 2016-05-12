@@ -11,18 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511085020) do
+ActiveRecord::Schema.define(version: 20160512012451) do
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "project_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.string   "title"
     t.text     "body"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "subject"
+    t.integer  "user_id",          null: false
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
-
-  add_index "comments", ["project_id"], name: "index_comments_on_project_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "group_memberships", force: :cascade do |t|
     t.integer  "member_id",       null: false
@@ -31,10 +34,7 @@ ActiveRecord::Schema.define(version: 20160511085020) do
     t.string   "group_type"
     t.string   "group_name"
     t.string   "membership_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
-
   add_index "group_memberships", ["group_name"], name: "index_group_memberships_on_group_name"
   add_index "group_memberships", ["group_type", "group_id"], name: "index_group_memberships_on_group_type_and_group_id"
   add_index "group_memberships", ["member_type", "member_id"], name: "index_group_memberships_on_member_type_and_member_id"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20160511085020) do
     t.string  "type"
     t.integer "project_id"
   end
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"

@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
     acts_as_votable
+    acts_as_commentable
 
     #Namespace and tags for the ActsAsTaggableOn gems
     acts_as_taggable

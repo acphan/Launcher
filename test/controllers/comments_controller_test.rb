@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
+<<<<<<< HEAD
   setup do
     @comment = comments(:one)
   end
@@ -46,4 +47,9 @@ class CommentsControllerTest < ActionController::TestCase
 
     assert_redirected_to comments_path
   end
+=======
+  # test "the truth" do
+  #   assert true
+  # end
+>>>>>>> master
 end
